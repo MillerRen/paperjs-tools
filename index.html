@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paperjs tools</title>
+    <script src="js/paper-full.min.js"></script>
+    <style>
+        canvas[resize] {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <button id="rect" onclick="switchTool('line')">line</button>
+    <button id="rect" onclick="switchTool('rect')">rect</button>
+    <button id="rect" onclick="switchTool('polygon')">polygon</button>
+    <button id="rect" onclick="switchTool('star')">star</button>
+    <button id="rect" onclick="switchTool('circle')">circle</button>
+    <button id="rect" onclick="switchTool('pencil')">pencil</button>
+    <button id="rect" onclick="switchTool('pen')">pen</button>
+    <button id="rect" onclick="switchTool('select')">select</button>
+    <button id="rect" onclick="switchTool('rotate')">rotate</button>
+    <button id="rect" onclick="switchTool('screw')">screw</button>
+    <button id="rect" onclick="switchTool('detailselect')">detailselect</button>
+    <canvas id="paper-canvas" resize></canvas>
+    <script src="js/tools.js"></script>
+    <script>
+        paper.setup('paper-canvas')
+        paper.project.currentStyle = {
+        strokeColor: 'red',
+        fillColor: 'green',
+        strokeWidth: 3
+    };
+    </script>
+    <script>
+        function switchTool(name) {
+            paper.tools.forEach(function (tool) {
+                if(tool.name == name) tool.activate();
+            })
+        }
+        switchTool('select');
+    </script>
+</body>
+</html>
